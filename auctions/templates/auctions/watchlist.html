@@ -1,0 +1,16 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>{{ name }} {{category }}</h2>
+    {% for auction in auctions %}
+    <div class="auction">
+        <img src="{{ auction.auction_id.url }}">
+        <a href= "{% url 'listings' auction.auction_id.id %}"><h3>{{ auction.auction_id.title }}</h3></a>
+        <br>
+        <p><b>Price:</b> ${{ auction.auction_id.price }}</p>
+        <p><b>Description:</b> {{ auction.auction_id.description }}</p>
+    </div>
+    {% empty %}
+        <h4>It seems there is nothing</h4>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,159 @@
+$background: #000000;
+$color:#D9D9D9;
+
+
+body {
+    padding: 50px;
+    padding-top: 10px;
+    background-color: $background;
+    color: $color;
+}
+
+.auction{
+    border-bottom: 1px groove $color;
+    margin-top: 10px;
+    margin-left: 10px;
+    height: 300px;
+
+
+    img{
+        position: absolute;
+        max-width: 500px;
+        max-height: 281.25px;
+    }
+
+    h3{
+        margin-left: 550px;
+        margin-bottom: 50px;
+    }
+    p{
+        margin-left: 550px;
+        display: block;
+        margin-bottom: 50px;
+    }
+}
+
+.category{
+    height: 100%;
+}
+
+.form-control{
+    background-color: #4E4F50;
+}
+
+
+.listings{
+    border-top: 1px groove $color;
+    margin-left: 10px;
+}
+
+
+.description{
+
+    .title{
+        margin-top:10px;
+    }
+    #watchlist{
+        background-color: #4E4F50;
+        color: $color;
+        padding: 3px;
+        border-radius: 10px;
+        font-size: 12px;
+    }
+
+    img{
+        margin-top: 20px; 
+        position: relative;
+        max-width: 750px;
+        min-height: 500px;
+        max-height: 650px;
+    }
+
+    .offer{
+        font-size: 13px;
+        margin-bottom: 0;
+    }
+
+    .form-bid{
+        width: 100%;
+
+        input[type="text"]{
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 3px;
+            border-radius: 3px;
+        }
+
+        input[type="submit"]{
+            background-color: #0D7BFF;
+            color: $color;
+            border-radius: 3px;
+            border: 0;
+            margin-bottom: 15px;
+        }
+    }
+
+}
+
+.comments{
+    padding:0px;
+
+    li{
+        list-style:none;
+        margin-bottom: 15px;
+    }
+}
+
+.add_comment{
+    width: 100%;
+
+    input[type="text"]{
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 3px;
+        border-radius: 3px;
+    }
+
+    input[type="submit"]{
+        background-color: #0D7BFF;
+        color: $color;
+        border-radius: 3px;
+        border: 0;
+        margin-bottom: 15px;
+    }
+}
+
+.create{
+    margin-left: 10px;
+    label{
+        display: block;
+    }
+
+    input{
+        background-color: $color;
+        border-radius: 5px;
+    }
+
+    select{
+        background-color: $color;
+        border-radius: 5px;
+    }
+    textarea{
+        width: 80%;
+        height: 300px;
+        border-radius: 5px;
+        background-color: $color;
+    }
+
+    input[type="submit"]{
+        display: block;
+        background-color: #0D7BFF;
+        color: $color;
+        border-radius: 3px;
+        border: 0;
+        margin-top: 15px;
+    }
+}
+
+
+

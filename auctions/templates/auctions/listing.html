@@ -1,0 +1,75 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <div class="listings">
+        <div class="description">
+            {% if message %}
+                <div class="alert alert-warning" role="alert">
+                    {{ message }}
+                </div>
+            {% endif %}
+            <h3 class="title">Listing: {{ auction.title }}</h3>
+            {% if user.is_authenticated %}
+                <a id="watchlist" href="{% url 'add' auction.id %}">Watchlist</a><br>
+            {% endif %}
+            <img src="{{ auction.url }}"><br>
+            <p>{{ auction.description }}</p>
+        {% if auction.available == True %}
+            <h3 class="price">${{ auction.price }}</h3>
+            <p class="offer">the last offer was for ${{ auction.offer }}</p>
+            {% if user.username == auction.created_by.username %}
+                <a href="{% url 'comment' auction.id %}">End auction</a>
+            {% else%}
+                {% if user.is_authenticated %}
+                    <form action="{% url 'listings' auction.id %}" method="post" class="form-bid">
+                        {% csrf_token %}
+                        <input type="text" placeholder="Bid" name="bid" required>
+                        <input type="submit" value="Place Bid">
+                    </form>  
+                {% else %}
+                    <h5>Login to make an offer.</h5>
+                {% endif %}
+            {% endif %}
+        </div>
+
+        {% else %}
+        {% if user.is_authenticated %}
+            <h3>Listing is disabled</h3><br>
+                {% if bids.user_id.username == user.username %}
+                    <h5>You are the winner</h5><br>
+                {% else %}
+                    <h5>You are not the winner</h5><br>
+                {% endif %}
+        {% endif %}
+        {% endif %}
+
+        <h3>Details</h3>
+        <ul>
+            <li>listed by: {{ auction.created_by }} </li>
+            <li>Category: <a href="{% url 'category' auction.category_id.id %}">{{ auction.category_id.category }}</a></li>
+        
+        </ul>
+
+        <h3>Comments</h3>
+
+        {% if user.is_authenticated %}
+        <form action="{% url 'comment' auction.id %}" method="post" class="add_comment">
+            {% csrf_token %}
+            <input type="text" name="comment" placeholder="Add comment" required>
+            <input type="submit" value="Add">
+        </form>
+
+
+        {% else %}
+            Login to make a comment.
+        {% endif %}
+        <ul class="comments">
+            {% for comment in comments %}
+                <li><b>{{ comment.user_id }}:</b> {{ comment.comment }}
+            {% empty %}
+                <li>No comments</li>
+            {% endfor%}
+        </ul>
+    </div>
+
+{% endblock %}
